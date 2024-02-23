@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+       
+
+        .container {
+          display: flex;
+          justify-content: center; /* Corrected spelling */
+          align-items: center;
+          height: 100%%;
+
+          form {
+            max-width: 400px;
+            width: 100%;
+            padding: 40px; /* Removed space between value and unit */
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        label {
+            color: #495057;
+        }
+
+        .form-control {
+            border: 1px solid #007bff;
+            border-radius: 400px;
+            margin-bottom: 7px;
+        }
+
+        .form-control:focus {
+            border-color: #0056b3;
+            box-shadow: 5px;
+        }
+
+        .form-check-input {
+            border-radius:5px;
+            border-color=solid black;
+            padding: 5px;
+        }
+
+        .form-check-label {
+            color: #007bff;
+
+        }
+        .working
+        {
+          color:black;
+
+        }
+        .working-check{
+          border-radius:10px;
+            border-color=solid black;
+            padding:5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-radius: 5px; 
+        }
+    </style>
+</head>
+<body>
+  {% include "emp/navbar.html" %}
+    <div class="container">
+        <div class="text-center">
+            <h1 class="my-3">Add New Employee</h1>
+
+            <form action="/employee/add-emp/" method="POST">
+              {% csrf_token %} 
+                <div class="form-group">
+                    <label for="exampleInputName">Name</label>
+                    <input name="emp_Name" type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Your Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input name="emp_Email"type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Mobile Number</label>
+                    <input name="emp_Phone" type="text" class="form-control" id="phone" placeholder="Enter Your Mobile Number">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputAddress">Address</label>
+                    <input name="emp_Address" type="text" class="form-control" id="exampleInputAddress" placeholder="Enter Your Address">
+                </div>
+
+                <div class="form-group">
+                    <label for="id">Employee Id</label>
+                    <input name="emp_Id" type="number" class="form-control" id="exampleInputEmployeeId" placeholder="Enter Your Employee Id">
+                </div>
+
+                <div class="form-group">
+                    <label for="Department">Department Name</label>
+                    <select name="emp_Department" id="Department" class="form-control" >
+                      <option value=""><--Select from here --></option>
+                      <option value="CSE">Computer Sc.</option>
+                      <option value="IT">Information Tech.</option>
+                      <option value="ME">Mechanical Engg.</option>
+                      <option value="EE">Electrical Engg.</option>
+                    </select>
+                </div>
+ 
+                <div class="form-check">
+                  <input name="emp_Status" type="checkbox" class="working-check" id="working">
+                  <label class="working" for="working">Working Status</label>
+              </div>
+
+                {% comment %} <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input name="emp_Password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div> {% endcomment %}
+                <small id="name" class="form-text text-muted"><b>We'll never share your data with anyone else.</b></small>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
